@@ -7,7 +7,7 @@ var/list/icons_to_ignore_at_floor_init = list("damaged1","damaged2","damaged3","
 				"asteroid","asteroid_dug",
 				"asteroid0","asteroid1","asteroid2","asteroid3","asteroid4",
 				"asteroid5","asteroid6","asteroid7","asteroid8","asteroid9","asteroid10","asteroid11","asteroid12",
-				"oldburning","light-on-r","light-on-y","light-on-g","light-on-b", "wood", "wood-broken", "fakespace",
+				"oldburning","light-on-r","light-on-y","light-on-g","light-on-b", "wood", "wood-broken", "carpet","carpet-broken",
 				"carpetcorner", "carpetside", "carpet", "ironsand1", "ironsand2", "ironsand3", "ironsand4", "ironsand5",
 				"ironsand6", "ironsand7", "ironsand8", "ironsand9", "ironsand10", "ironsand11",
 				"ironsand12", "ironsand13", "ironsand14", "ironsand15")
@@ -16,7 +16,27 @@ var/list/plating_icons = list("plating","platingdmg1","platingdmg2","platingdmg3
 				"ironsand1", "ironsand2", "ironsand3", "ironsand4", "ironsand5", "ironsand6", "ironsand7",
 				"ironsand8", "ironsand9", "ironsand10", "ironsand11",
 				"ironsand12", "ironsand13", "ironsand14", "ironsand15")
-var/list/wood_icons = list("wood","wood-broken")
+
+var/list/wood_icons = list("wood","wood1","wood2","wood3","wood4","wood5","woodold","wood-broken","wood-broken1","wood-broken2","wood-broken3","wood-broken4","wood-broken5","wood-broken6","wood-broken7","mrboneswood")
+
+var/list/fakespace_icons = list("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25")
+
+var/list/gold_icons = list("gold","gold-broken")
+
+var/list/bananium_icons = list("bananium","bananium-broken")
+
+var/list/plasma_icons = list("plasma","plasma-broken")
+
+var/list/silver_icons = list("silver","silver-broken")
+
+var/list/uranium_icons = list("uranium","uranium-broken")
+
+var/list/diamond_icons = list("diamond","diamond-broken")
+
+var/list/grimy_icons = list("grimy")
+
+var/list/arcade_icons = list("arcade")
+
 
 /turf/simulated/floor
 
@@ -113,11 +133,11 @@ turf/simulated/floor/proc/update_icon()
 				icon_state = "grass[pick("1","2","3","4")]"
 	else if(is_fakespace_floor())
 		if(!broken && !burnt)
-			if(!(icon_state in list("1","2","3","4")))
+			if( !(icon_state in fakespace_icons) )
 				icon_state = "[pick("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25")]"
 	else if(is_carpet_floor())
 		if(!broken && !burnt)
-			if(icon_state == "carpet")
+			if(icon_state != "carpetsymbol")
 				var/connectdir = 0
 				for(var/direction in cardinal)
 					if(istype(get_step(src,direction),/turf/simulated/floor))
@@ -157,6 +177,46 @@ turf/simulated/floor/proc/update_icon()
 							diagonalconnect |= 8
 
 				icon_state = "carpet[connectdir]-[diagonalconnect]"
+
+	else if(is_gold_floor())
+		if(!broken && !burnt)
+			if( !(icon_state in gold_icons) )
+				icon_state = "gold"
+
+	else if(is_plasma_floor())
+		if(!broken && !burnt)
+			if( !(icon_state in plasma_icons) )
+				icon_state = "plasma"
+
+	else if(is_silver_floor())
+		if(!broken && !burnt)
+			if( !(icon_state in silver_icons) )
+				icon_state = "silver"
+
+	else if(is_bananium_floor())
+		if(!broken && !burnt)
+			if( !(icon_state in bananium_icons) )
+				icon_state = "bananium"
+
+	else if(is_uranium_floor())
+		if(!broken && !burnt)
+			if( !(icon_state in uranium_icons) )
+				icon_state = "uranium"
+
+	else if(is_diamond_floor())
+		if(!broken && !burnt)
+			if( !(icon_state in diamond_icons) )
+				icon_state = "diamond"
+
+	else if(is_grimy_floor())
+		if(!broken && !burnt)
+			if( !(icon_state in grimy_icons) )
+				icon_state = "grimy"
+
+	else if(is_arcade_floor())
+		if(!broken && !burnt)
+			if( !(icon_state in arcade_icons) )
+				icon_state = "arcade"
 
 	else if(is_wood_floor())
 		if(!broken && !burnt)
@@ -243,6 +303,42 @@ turf/simulated/floor/proc/update_icon()
 	else
 		return 0
 
+/turf/simulated/floor/is_bananium_floor()
+	if(istype(floor_tile,/obj/item/stack/tile/bananium))
+		return 1
+	else
+		return 0
+
+/turf/simulated/floor/is_gold_floor()
+	if(istype(floor_tile,/obj/item/stack/tile/gold))
+		return 1
+	else
+		return 0
+
+/turf/simulated/floor/is_plasma_floor()
+	if(istype(floor_tile,/obj/item/stack/tile/plasma))
+		return 1
+	else
+		return 0
+
+/turf/simulated/floor/is_silver_floor()
+	if(istype(floor_tile,/obj/item/stack/tile/silver))
+		return 1
+	else
+		return 0
+
+/turf/simulated/floor/is_uranium_floor()
+	if(istype(floor_tile,/obj/item/stack/tile/uranium))
+		return 1
+	else
+		return 0
+
+/turf/simulated/floor/is_diamond_floor()
+	if(istype(floor_tile,/obj/item/stack/tile/diamond))
+		return 1
+	else
+		return 0
+
 /turf/simulated/floor/is_carpet_floor()
 	if(istype(floor_tile,/obj/item/stack/tile/carpet))
 		return 1
@@ -251,6 +347,18 @@ turf/simulated/floor/proc/update_icon()
 
 /turf/simulated/floor/is_fakespace_floor()
 	if(istype(floor_tile,/obj/item/stack/tile/fakespace))
+		return 1
+	else
+		return 0
+
+/turf/simulated/floor/is_grimy_floor()
+	if(istype(floor_tile,/obj/item/stack/tile/fakecarpet/grimy))
+		return 1
+	else
+		return 0
+
+/turf/simulated/floor/is_arcade_floor()
+	if(istype(floor_tile,/obj/item/stack/tile/fakecarpet/arcade))
 		return 1
 	else
 		return 0
@@ -277,11 +385,32 @@ turf/simulated/floor/proc/update_icon()
 	else if(is_wood_floor())
 		src.icon_state = "wood-broken"
 		broken = 1
+	else if(is_bananium_floor())
+		src.icon_state = "bananium-broken"
+		broken = 1
+	else if(is_gold_floor())
+		src.icon_state = "gold-broken"
+		broken = 1
+	else if(is_plasma_floor())
+		src.icon_state = "plasma-broken"
+		broken = 1
+	else if(is_silver_floor())
+		src.icon_state = "silver-broken"
+		broken = 1
+	else if(is_uranium_floor())
+		src.icon_state = "uranium-broken"
+		broken = 1
+	else if(is_diamond_floor())
+		src.icon_state = "diamond-broken"
+		broken = 1
 	else if(is_carpet_floor())
 		src.icon_state = "carpet-broken"
 		broken = 1
-	else if(is_fakespace_floor())
-		src.icon_state = "damaged[pick(1,2,3,4,5)]"
+	else if(is_grimy_floor())
+		src.icon_state = "carpet-broken"
+		broken = 1
+	else if(is_arcade_floor())
+		src.icon_state = "carpet-broken"
 		broken = 1
 	else if(is_grass_floor())
 		src.icon_state = "sand[pick("1","2","3")]"
@@ -303,11 +432,26 @@ turf/simulated/floor/proc/update_icon()
 	else if(is_wood_floor())
 		src.icon_state = "wood-broken"
 		burnt = 1
+	else if(is_bananium_floor())
+		src.icon_state = "bananium-broken"
+		burnt = 1
+	else if(is_gold_floor())
+		src.icon_state = "gold-broken"
+		burnt = 1
+	else if(is_silver_floor())
+		src.icon_state = "silver-broken"
+		burnt = 1
+	else if(is_uranium_floor())
+		src.icon_state = "uranium-broken"
+		burnt = 1
 	else if(is_carpet_floor())
 		src.icon_state = "carpet-broken"
 		burnt = 1
-	else if(is_fakespace_floor())
-		src.icon_state = "damaged[pick(1,2,3,4,5)]"
+	else if(is_grimy_floor())
+		src.icon_state = "carpet-broken"
+		burnt = 1
+	else if(is_arcade_floor())
+		src.icon_state = "carpet-broken"
 		burnt = 1
 	else if(is_grass_floor())
 		src.icon_state = "sand[pick("1","2","3")]"
@@ -323,11 +467,10 @@ turf/simulated/floor/proc/update_icon()
 			if(istype(get_step(src,direction),/turf/simulated/floor))
 				var/turf/simulated/floor/FF = get_step(src,direction)
 				FF.update_icon() //so siding get updated properly
-
 	else if(is_carpet_floor())
 		spawn(5)
 			if(src)
-				for(var/direction in list(1,2,4,8,5,6,9,10))
+				for(var/direction in alldirs)
 					if(istype(get_step(src,direction),/turf/simulated/floor))
 						var/turf/simulated/floor/FF = get_step(src,direction)
 						FF.update_icon() //so siding get updated properly
@@ -444,6 +587,119 @@ turf/simulated/floor/proc/update_icon()
 	update_icon()
 	levelupdate()
 
+/turf/simulated/floor/proc/make_grimy_floor(var/obj/item/stack/tile/fakecarpet/grimy/T = null)
+	broken = 0
+	burnt = 0
+	intact = 1
+	if(T)
+		if(istype(T,/obj/item/stack/tile/fakecarpet/grimy))
+			floor_tile = T
+			update_icon()
+			levelupdate()
+			return
+	//if you gave a valid parameter, it won't get thisf ar.
+	floor_tile = new/obj/item/stack/tile/fakecarpet/grimy
+
+	update_icon()
+	levelupdate()
+
+/turf/simulated/floor/proc/make_arcade_floor(var/obj/item/stack/tile/fakecarpet/arcade/T = null)
+	broken = 0
+	burnt = 0
+	intact = 1
+	if(T)
+		if(istype(T,/obj/item/stack/tile/fakecarpet/arcade))
+			floor_tile = T
+			update_icon()
+			levelupdate()
+			return
+	//if you gave a valid parameter, it won't get thisf ar.
+	floor_tile = new/obj/item/stack/tile/fakecarpet/arcade
+
+	update_icon()
+	levelupdate()
+
+//new
+/turf/simulated/floor/proc/make_bananium_floor(var/obj/item/stack/tile/bananium/T = null)
+	broken = 0
+	burnt = 0
+	intact = 1
+	if(T)
+		if(istype(T,/obj/item/stack/tile/bananium))
+			floor_tile = T
+			update_icon()
+			levelupdate()
+			return
+	//if you gave a valid parameter, it won't get thisf ar.
+	floor_tile = new/obj/item/stack/tile/bananium
+
+	update_icon()
+	levelupdate()
+
+/turf/simulated/floor/proc/make_gold_floor(var/obj/item/stack/tile/gold/T = null)
+	broken = 0
+	burnt = 0
+	intact = 1
+	if(T)
+		if(istype(T,/obj/item/stack/tile/gold))
+			floor_tile = T
+			update_icon()
+			levelupdate()
+			return
+	//if you gave a valid parameter, it won't get thisf ar.
+	floor_tile = new/obj/item/stack/tile/gold
+
+	update_icon()
+	levelupdate()
+
+/turf/simulated/floor/proc/make_plasma_floor(var/obj/item/stack/tile/plasma/T = null)
+	broken = 0
+	burnt = 0
+	intact = 1
+	if(T)
+		if(istype(T,/obj/item/stack/tile/plasma))
+			floor_tile = T
+			update_icon()
+			levelupdate()
+			return
+	//if you gave a valid parameter, it won't get thisf ar.
+	floor_tile = new/obj/item/stack/tile/plasma
+
+	update_icon()
+	levelupdate()
+
+/turf/simulated/floor/proc/make_silver_floor(var/obj/item/stack/tile/silver/T = null)
+	broken = 0
+	burnt = 0
+	intact = 1
+	if(T)
+		if(istype(T,/obj/item/stack/tile/silver))
+			floor_tile = T
+			update_icon()
+			levelupdate()
+			return
+	//if you gave a valid parameter, it won't get thisf ar.
+	floor_tile = new/obj/item/stack/tile/silver
+
+	update_icon()
+	levelupdate()
+
+/turf/simulated/floor/proc/make_uranium_floor(var/obj/item/stack/tile/uranium/T = null)
+	broken = 0
+	burnt = 0
+	intact = 1
+	if(T)
+		if(istype(T,/obj/item/stack/tile/uranium))
+			floor_tile = T
+			update_icon()
+			levelupdate()
+			return
+	//if you gave a valid parameter, it won't get thisf ar.
+	floor_tile = new/obj/item/stack/tile/uranium
+
+	update_icon()
+	levelupdate()
+
 //This proc will make a turf into a wood floor. Fun eh? Insert the wood tile to be used as the argument
 //If no argument is given a new one will be made.
 /turf/simulated/floor/proc/make_fakespace_floor(var/obj/item/stack/tile/fakespace/T = null)
@@ -540,7 +796,7 @@ turf/simulated/floor/proc/update_icon()
 							var/turf/simulated/floor/FF = get_step(src,direction)
 							FF.update_icon() //so siding gets updated properly
 				else if(istype(T,/obj/item/stack/tile/carpet))
-					for(var/direction in list(1,2,4,8,5,6,9,10))
+					for(var/direction in alldirs)
 						if(istype(get_step(src,direction),/turf/simulated/floor))
 							var/turf/simulated/floor/FF = get_step(src,direction)
 							FF.update_icon() //so siding gets updated properly
@@ -580,3 +836,23 @@ turf/simulated/floor/proc/update_icon()
 					broken = 0
 				else
 					user << "\blue You need more welding fuel to complete this task."
+
+/turf/simulated/floor/Entered(var/atom/movable/AM)
+	.=..()
+
+	var/turf/simulated/floor/T
+	if(AM && istype(AM,/mob/living))
+
+		if(istype(T,/obj/item/stack/tile/bananium))
+			playsound(get_turf(src), "clownstep", 50, 1)
+
+		if(istype(T,/obj/item/stack/tile/uranium))
+			set_light(3)
+			icon_state = "uranium_inactive"
+			for(var/mob/living/L in range(2,src)) //Weak radiation
+				radiation_pulse(get_turf(src), 1, 1, 25, 1)
+			flick("uranium_active",src)
+			spawn(20)
+				set_light(0)
+			spawn(200)
+				update_icon()

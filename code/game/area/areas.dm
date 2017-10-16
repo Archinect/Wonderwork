@@ -215,11 +215,10 @@
 // called when power status changes
 
 /area/proc/power_change()
-	for(var/area/RA in related)
-		for(var/obj/machinery/M in RA)	// for each machine in the area
-			M.power_change()				// reverify power status (to update icons etc.)
-		if (fire || eject || party)
-			RA.updateicon()
+	for(var/obj/machinery/M in src)	// for each machine in the area
+		M.power_change()				// reverify power status (to update icons etc.)
+	if (fire || eject || party)
+		updateicon()
 
 /area/proc/usage(var/chan)
 	var/used = 0

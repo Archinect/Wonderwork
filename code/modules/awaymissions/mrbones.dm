@@ -10,7 +10,7 @@
 /obj/structure/awaymission/mrbones/candle/New()
 	..()
 	set_light(5)
-
+/*
 /obj/structure/awaymission/mrbones/sign
 	name = "SPOOKY CAVE"
 	desc = "2SPOOKY 4 U"
@@ -21,3 +21,4 @@
 	desc = "Lavely helps you get past otherwise deadly lava."
 	icon = 'icons/awaymissions/mrbones.dmi'
 	icon_state = "draw"
+*/

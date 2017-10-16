@@ -832,10 +832,10 @@
 	refill_canister = /obj/item/weapon/vending_charge/cigarette
 	products = list(/obj/item/weapon/storage/fancy/cigarettes = 10,/obj/item/weapon/storage/fancy/cigarettes/cigpack_uplift = 4,
 					/obj/item/weapon/storage/fancy/cigarettes/cigpack_robust = 5,/obj/item/weapon/storage/fancy/cigarettes/cigpack_robustgold = 2,
-					/obj/item/weapon/storage/fancy/cigarettes/cigpack_carp = 3,/obj/item/weapon/storage/fancy/cigarettes/cigpack_midori = 6,
+					/obj/item/weapon/storage/fancy/cigarettes/cigpack_carp = 3,
 					/obj/item/weapon/storage/fancy/cigarettes/cigpack_shadyjims = 6,/obj/item/weapon/storage/fancy/cigarettes/chempacket = 4,
 					/obj/item/weapon/storage/box/matches = 10,/obj/item/weapon/lighter/random = 4)
-	contraband = list(/obj/item/weapon/lighter/zippo = 4)
+	contraband = list(/obj/item/weapon/lighter/zippo = 4,/obj/item/weapon/storage/fancy/cigarettes/cigpack_midori = 1)
 	premium = list(/obj/item/clothing/mask/cigarette/cigar/havana = 2)
 //	prices = list(/obj/item/weapon/storage/fancy/cigarettes = 60,/obj/item/weapon/storage/box/matches = 10,/obj/item/weapon/lighter/random = 60)
 

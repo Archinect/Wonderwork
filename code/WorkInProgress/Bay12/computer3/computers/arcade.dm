@@ -4,27 +4,97 @@
 	icon_state			= "frame-arc"
 	light_color = LIGHT_COLOR_ORANGE
 
+	var/list/prizes = list(	/obj/item/weapon/storage/box/toy/snappops				= 2,
+							/obj/item/weapon/storage/box/toy/waterballoons			= 2,
+							/obj/item/toy/c4										= 2,
+							/obj/item/device/radio/beacon/blink						= 2,
+							/obj/item/clothing/under/syndicate						= 2,
+							/obj/item/toy/sword										= 3,
+							/obj/item/toy/gun										= 2,
+							/obj/item/toy/crossbow									= 2,
+							/obj/item/toy/nuke										= 2,
+							/obj/item/toy/minimeteor								= 2,
+							/obj/item/toy/redbutton									= 2,
+							/obj/item/stack/tile/fakespace							= 2,
+							/obj/item/clothing/suit/syndicatefake					= 5, //vends all types, see vend_prize()
+							/obj/item/toy/figure									= 5, //vends all types, see vend_prize()
+							/obj/item/weapon/storage/fancy/crayons					= 2,
+							/obj/item/toy/spinningtoy								= 2,
+							/obj/item/toy/prize										= 6, //vends all types except base, see vend_prize()
+							/obj/item/weapon/reagent_containers/spray/waterflower	= 2,
+							)
+
+/obj/machinery/computer3/arcade/emp_act(severity)
+	if(stat & (NOPOWER|BROKEN))
+		..(severity)
+		return
+
+	if(emagged && prob(90/severity))
+		explode()
+		return
+
+	switch(severity)
+		if(1)
+			vend_prize(rand(2,4))
+		if(2)
+			vend_prize(rand(1,2))
+		if(3)
+			vend_prize(rand(0,1))
+
+	..(severity)
+
+/obj/machinery/computer3/arcade/proc/vend_prize(var/prize_amount=0)
+	if(prize_amount)
+		for(prize_amount; prize_amount > 0; prize_amount--)
+			vend_prize()
+			sleep(5)
+		return
+
+	var/prize = pickweight(prizes)
+
+	if(emagged)
+		prize = /obj/effect/spawner/newbomb/timer
+		new /obj/item/clothing/head/collectable/petehat(src.loc)
+		message_admins("[key_name_admin(usr)] has outbombed Cuban Pete and been awarded a bomb.")
+
+	else if(prize == /obj/item/toy/prize)
+		prize = pick(typesof(/obj/item/toy/prize) - /obj/item/toy/prize)
+
+	else if(prize == /obj/item/toy/figure)
+		prize = pick(typesof(/obj/item/toy/figure) - /obj/item/toy/figure)
+
+	else if(prize == /obj/item/toy/gun) //Ammo comes with the gun
+		new /obj/item/toy/ammo/gun(src.loc)
+
+	else if(prize == /obj/item/clothing/suit/syndicatefake) //Helmet is part of the suit
+		prize = pick(typesof(/obj/item/clothing/suit/syndicatefake))
+
+	new prize(src.loc)
+
+
+/obj/machinery/computer3/arcade/proc/explode() //Cuban Pete WINS!
+	explosion(get_turf(src), 1, 2, 3) //BOOM
+	del(src)
+
 /obj/item/part/computer/toybox
-	var/list/prizes = list(	/obj/item/weapon/storage/box/toy/snappops		= 2,
-							/obj/item/device/radio/beacon/blink				= 2,
-							/obj/item/clothing/under/syndicate/tacticool	= 2,
-							/obj/item/toy/sword								= 2,
-							/obj/item/toy/gun								= 2,
-							/obj/item/toy/crossbow							= 2,
-							/obj/item/clothing/suit/syndicatefake			= 2,
-							/obj/item/weapon/storage/fancy/crayons			= 2,
-							/obj/item/toy/spinningtoy						= 2,
-							/obj/item/toy/prize/ripley						= 1,
-							/obj/item/toy/prize/fireripley					= 1,
-							/obj/item/toy/prize/deathripley					= 1,
-							/obj/item/toy/prize/gygax						= 1,
-							/obj/item/toy/prize/durand						= 1,
-							/obj/item/toy/prize/honk						= 1,
-							/obj/item/toy/prize/marauder					= 1,
-							/obj/item/toy/prize/seraph						= 1,
-							/obj/item/toy/prize/mauler						= 1,
-							/obj/item/toy/prize/odysseus					= 1,
-							/obj/item/toy/prize/phazon						= 1
+	var/list/prizes = list(	/obj/item/weapon/storage/box/toy/snappops				= 2,
+							/obj/item/weapon/storage/box/toy/waterballoons			= 2,
+							/obj/item/toy/c4										= 2,
+							/obj/item/device/radio/beacon/blink						= 2,
+							/obj/item/clothing/under/syndicate						= 2,
+							/obj/item/toy/sword										= 3,
+							/obj/item/toy/gun										= 2,
+							/obj/item/toy/crossbow									= 2,
+							/obj/item/toy/nuke										= 2,
+							/obj/item/toy/minimeteor								= 2,
+							/obj/item/toy/redbutton									= 2,
+							/obj/item/stack/tile/fakespace							= 2,
+							/obj/item/clothing/suit/syndicatefake					= 5, //vends all types, see vend_prize()
+							/obj/item/toy/figure									= 5, //vends all types, see vend_prize()
+							/obj/item/weapon/storage/fancy/crayons					= 2,
+							/obj/item/toy/spinningtoy								= 2,
+							/obj/item/toy/prize										= 6, //vends all types except base, see vend_prize()
+							/obj/item/weapon/reagent_containers/spray/waterflower	= 2,
 							)
 	proc/dispense()
 		if(computer && !computer.stat)

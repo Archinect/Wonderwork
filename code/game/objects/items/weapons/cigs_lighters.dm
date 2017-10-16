@@ -445,14 +445,22 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/weapon/lighter/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!isliving(M))
 		return
-	M.IgniteMob()
-	if(istype(M.wear_mask,/obj/item/clothing/mask/cigarette) && user.zone_sel.selecting == "mouth" && src.lit)
+
+	if(lit == 1)
+		M.IgniteMob()
+
+	if(istype(M.wear_mask, /obj/item/clothing/mask/cigarette) && user.zone_sel.selecting == "mouth" && lit)
+		var/obj/item/clothing/mask/cigarette/cig = M.wear_mask
 		if(M == user)
-			M.wear_mask:light("\red With a single flick of their wrist, [user] smoothly lights their [M.wear_mask.name] with their [src.name]. Damn they're cool.")
+			cig.attackby(src, user)
 		else
-			M.wear_mask:light("\red [user] whips the [src.name] out and holds it for [M]. Their arm is as steady as the unflickering flame they light the [M.wear_mask.name] with.")
+			if(istype(src, /obj/item/weapon/lighter/zippo))
+				cig.light("\red With a single flick of their wrist, [user] smoothly lights their [cig.name] with their [src.name]. Damn they're cool.")
+			else
+				cig.light("\red [user] whips the [src.name] out and holds it for [M]. Their arm is as steady as the unflickering flame they light the [cig.name] with.")
 	else
 		..()
+
 
 /obj/item/weapon/lighter/process()
 	var/turf/location = get_turf(src)

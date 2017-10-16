@@ -582,7 +582,7 @@
 		while(active)
 			if(hasmob && prob(10))
 				for(var/mob/living/H in src)
-					H.take_overall_damage(20, 0, "Blunt Trauma")
+					H.take_overall_damage(10, 0, "Blunt Trauma")
 
 			if(has_fat_guy && prob(2)) // chance of becoming stuck per segment if contains a fat guy
 				active = 0

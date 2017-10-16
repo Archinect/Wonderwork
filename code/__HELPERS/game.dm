@@ -14,7 +14,7 @@
 		return 1
 	return 0
 
-/proc/get_new_area(O)
+/proc/get_area_by_turf(O)
 	var/turf/loc = get_turf(O)
 	if(loc)
 		var/area/res = loc.loc

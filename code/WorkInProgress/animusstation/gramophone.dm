@@ -1,7 +1,3 @@
-//	var/list/gramophone_tracks = list(
-//		"Walz #2"									= list('sound/turntable/valz2.ogg')
-//	)
-
 /obj/machinery/gramophone
 	name = "Gramophone"
 	desc = "Old-time styley."

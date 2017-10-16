@@ -852,7 +852,7 @@ commented out in r5061, I left it because of the shroom thingies
 
 /turf/simulated/floor/plating/airless/asteroid //floor piece
 	name = "Asteroid"
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/asteroid.dmi'
 	icon_state = "asteroid"
 	oxygen = 0.01
 	nitrogen = 0.01

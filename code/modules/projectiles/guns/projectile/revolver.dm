@@ -81,7 +81,7 @@
 	set desc = "Click to rename your gun."
 
 	var/mob/M = usr
-	var/input = stripped_input(M,"What do you want to name the gun?", ,"", 20)
+	var/input = copytext(stripped_input(M,"What do you want to name the gun?", ,"", 20),1,MAX_NAME_LEN)
 
 	if(src && input && !M.stat && in_range(M,src))
 		name = input

@@ -208,3 +208,15 @@
 //	..()
 //	for(var/datum/assemblerprint/recipe in assembler_recipes)
 //		recipes += recipe
+
+
+/obj/item/weapon/metaldetector
+	icon = 'icons/obj/adv_stock_parts.dmi'
+	name = "metaldetector frame"
+	icon_state = "deploy0"
+	w_class = 4.0
+
+	attack_self(mob/user)
+		var/obj/machinery/metal_detector/M = new /obj/machinery/metal_detector(user.loc)
+		M.add_fingerprint(user)
+		del(src)

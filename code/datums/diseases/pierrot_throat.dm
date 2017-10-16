@@ -16,10 +16,10 @@
 	..()
 	switch(stage)
 		if(1)
-			if(prob(10)) affected_mob << "\red You feel a little silly."
+			if(prob(10)) affected_mob << "\red Вы чувствуете себ&#255; немого глупо."
 		if(2)
-			if(prob(10)) affected_mob << "\red You start seeing rainbows."
+			if(prob(10)) affected_mob << "\red Вы начинаете видеть радугу."
 		if(3)
-			if(prob(10)) affected_mob << "\red Your thoughts are interrupted by a loud <b>HONK!</b>"
+			if(prob(10)) affected_mob << "\red Вы начинаете думать о петухах: <b>Кудах!</b>"
 		if(4)
-			if(prob(5)) affected_mob.say( pick( list("HONK!", "Honk!", "Honk.", "Honk?", "Honk!!", "Honk?!", "Honk...") ) )
+			if(prob(5)) affected_mob.say( pick( list("КО-КО-КО!", "Ко-ко!", "Ко-ко-ко.", "Ко-ко-ко?", "КО-КО-КО!!", "Кудах?!", "Куд-кудах...") ) )

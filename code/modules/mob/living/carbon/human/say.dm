@@ -28,13 +28,28 @@
 				if(prob(3 * D.stage)) //Stage 1: 3% Stage 2: 6% Stage 3: 9% Stage 4: 12%
 					var/H = pick(pick_list)
 					if(findtext(temp_message[H], "*") || findtext(temp_message[H], ";") || findtext(temp_message[H], ":")) continue
-					temp_message[H] = "HONK"
+					temp_message[H] = "КО-КО-КО-КО"
 					pick_list -= H //Make sure that you dont HONK the same word twice
 				message = dd_list2text(temp_message, " ")
 
 	if(wear_mask)
 		if(istype(wear_mask, /obj/item/clothing/mask/luchador))
 			if(copytext(message, 1, 2) != "*")
+				message = replacetext(message, "капитан", "КАБЕДАН")
+				message = replacetext(message, "станци&#255;", "СТАТИОН")
+				message = replacetext(message, "сэр", "пидар")
+				message = replacetext(message, "the ", "el ")
+				message = replacetext(message, "мой ", "mi ")
+				message = replacetext(message, "друг", "амиго")
+				message = replacetext(message, "напарник", "амиго")
+				message = replacetext(message, "привет", "хола")
+				message = replacetext(message, " гор&#255;чий", " caliente")
+				message = replacetext(message, " очень ", " muy ")
+				message = replacetext(message, "меч", "espada")
+				message = replacetext(message, "библиотека", "biblioteca")
+				message = replacetext(message, "предатель", "traidor")
+				message = replacetext(message, "маг", "mago")
+				message = uppertext(message) //Things end up looking better this way (no mixed cases), and it fits the macho wrestler image.
 				if(prob(25))
 					message += " OLE!"
 
@@ -42,7 +57,7 @@
 			var/obj/item/clothing/mask/horsehead/hoers = wear_mask
 			if(hoers.voicechange)
 				if(!(copytext(message, 1, 2) == "*" || (mind && mind.changeling && department_radio_keys[copytext(message, 1, 3)] != "changeling")))
-					message = pick("NEEIIGGGHHHH!", "NEEEIIIIGHH!", "NEIIIGGHH!", "HAAWWWWW!", "HAAAWWW!")
+					message = pick("И-ГО-ГО-ГО!", "БР-Р-Р-Р!", "АВУ-ГО-ГО-ГО!", "ХАУ-У-У-У!", "ГО-ГО-ГО-ГО!")
 
 		else if(istype(wear_mask, /obj/item/clothing/mask/gas/cheekibreeki))
 			if(copytext(message, 1, 2) != "*")

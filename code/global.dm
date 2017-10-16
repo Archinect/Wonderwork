@@ -230,6 +230,8 @@ var/sqldb = "tgstation"
 var/sqllogin = "root"
 var/sqlpass = ""
 
+var/sqlfdbktableprefix = "erro_" //backwords compatibility with downstream server hosts
+
 
 	// Variables which change is necessary for conducting's Event
 var/timetorespawn = 30

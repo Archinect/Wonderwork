@@ -10,20 +10,23 @@
 	var/on = 1
 	var/area/area = null
 	var/otherarea = null
-
+	//	luminosity = 1
 
 /obj/machinery/light_switch/New()
 	..()
-	src.area = get_area(src)
+	spawn(5)
+		src.area = get_area_by_turf(src)
 
-	if(otherarea)
-		src.area = locate(text2path("/area/[otherarea]"))
+		if(otherarea)
+			src.area = locate(text2path("/area/[otherarea]"))
 
-	if(!name)
-		name = "light switch ([area.name])"
+		if(!name)
+			name = "light switch ([area.name])"
 
-	src.on = src.area.lightswitch
-	updateicon()
+		src.on = src.area.lightswitch
+		updateicon()
+
+
 
 /obj/machinery/light_switch/proc/updateicon()
 	if(stat & NOPOWER)
@@ -32,7 +35,8 @@
 		icon_state = "light[on]"
 
 /obj/machinery/light_switch/examine(mob/user)
-	if(..(user, 1))
+	. = ..(user)
+	if(. <= 1)
 		user << "A light switch. It is [on? "on" : "off"]."
 
 /obj/machinery/light_switch/attack_hand(mob/user)
@@ -45,15 +49,6 @@
 	for(var/obj/machinery/light_switch/L in area)
 		L.on = on
 		L.updateicon()
-
-	for(var/obj/machinery/light/L in area)
-		if(on)
-			L.on = 0
-			L.update(0)
-
-		else
-			L.on = 1
-			L.update(0)
 
 	area.power_change()
 

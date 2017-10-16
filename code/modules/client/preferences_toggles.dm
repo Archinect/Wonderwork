@@ -4,7 +4,7 @@
 	set category = "Preferences"
 	set desc = ".Toggle Between seeing all mob speech, and only speech of nearby mobs"
 	prefs.toggles ^= CHAT_GHOSTEARS
-	src << "As a ghost, you will now [(prefs.toggles & CHAT_GHOSTEARS) ? "see all speech in the world" : "only see speech from nearby mobs"]."
+	src << "As a ghost, you will now [(prefs.toggles & CHAT_GHOSTEARS) ? "only see speech from nearby mobs" : "see all speech in the world"]."
 	prefs.save_preferences()
 	feedback_add_details("admin_verb","TGE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -13,7 +13,7 @@
 	set category = "Preferences"
 	set desc = ".Toggle Between seeing all mob emotes, and only emotes of nearby mobs"
 	prefs.toggles ^= CHAT_GHOSTSIGHT
-	src << "As a ghost, you will now [(prefs.toggles & CHAT_GHOSTSIGHT) ? "see all emotes in the world" : "only see emotes from nearby mobs"]."
+	src << "As a ghost, you will now [(prefs.toggles & CHAT_GHOSTSIGHT) ? "only see emotes from nearby mobs" : "see all emotes in the world"]."
 	prefs.save_preferences()
 	feedback_add_details("admin_verb","TGS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

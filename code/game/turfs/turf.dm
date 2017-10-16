@@ -168,7 +168,23 @@
 	return 0
 /turf/proc/is_wood_floor()
 	return 0
+/turf/proc/is_bananium_floor()
+	return 0
+/turf/proc/is_gold_floor()
+	return 0
+/turf/proc/is_plasma_floor()
+	return 0
+/turf/proc/is_silver_floor()
+	return 0
+/turf/proc/is_uranium_floor()
+	return 0
+/turf/proc/is_diamond_floor()
+	return 0
 /turf/proc/is_carpet_floor()
+	return 0
+/turf/proc/is_grimy_floor()
+	return 0
+/turf/proc/is_arcade_floor()
 	return 0
 /turf/proc/is_fakespace_floor()
 	return 0
@@ -351,3 +367,4 @@
 /turf/proc/canBuildPlating()
 	//writepanic("[__FILE__].[__LINE__] ([src.type])([usr ? usr.ckey : ""])  \\/turf/proc/canBuildPlating() called tick#: [world.time]")
 	return BUILD_SILENT_FAILURE
+

@@ -111,51 +111,51 @@
 			update_icon()
 			user << "\blue You add a rollerbed to the despenser."
 
-/*
-/obj/machinery/despenser/wheelchair
-	name = "Wheelchair Despenser"
-	icon = 'icons/obj/coffindispenser.dmi'
-	desc = "A wheelchair despenser!"
+
+/obj/machinery/despenser/metaldetector
+	name = "Metaldetector Despenser"
+	icon = 'icons/obj/dispenser.dmi'
+	desc = "A metaldetector despenser!"
 	icon_state = "wcd0"
 	anchored = 1
 	density = 0
 	var/numofWC = 0
 
 
-/obj/machinery/despenser/wheelchair/New()
+/obj/machinery/despenser/metaldetector/New()
 	numofWC = 6
 	icon_state = "wcd6"
 	update_icon()
 
-/obj/machinery/despenser/wheelchair/update_icon()
+/obj/machinery/despenser/metaldetector/update_icon()
 	icon_state ="wcd[numofWC]"
 
-/obj/machinery/despenser/wheelchair/attack_hand(mob/user as mob)
+/obj/machinery/despenser/metaldetector/attack_hand(mob/user as mob)
 	dispenseWC()
 
-/obj/machinery/despenser/wheelchair/attack_robot(mob/user as mob)
+/obj/machinery/despenser/metaldetector/attack_robot(mob/user as mob)
 	if(Adjacent(user))
 		return src.attack_hand(user)
 	else
 		user << "<span class = \"warning\">You attempt to interface with the control circuits but find they are not connected to your network.  Maybe in a future firmware update.</span>"
 	return
 
-/obj/machinery/despenser/wheelchair/proc/dispenseWC()
-	for(var/obj/structure/stool/bed/chair/wheelchair/C in src.loc.contents)
-		usr << "\red Cannot despense due to a Wheelchair in despensing area."
+/obj/machinery/despenser/metaldetector/proc/dispenseWC()
+	for(var/obj/item/weapon/metaldetector/C in src.loc.contents)
+		usr << "\red Cannot despense due to a Metaldetector in despensing area."
 		return
 	if(numofWC == 0)
 		usr << "\red Out of Wheelchairs please refill."
 		return
 	if(numofWC >= 1)
-		new /obj/structure/stool/bed/chair/wheelchair(src.loc)
+		new /obj/item/weapon/metaldetector(src.loc)
 		numofWC--
 		update_icon()
 		return
 
-/obj/machinery/despenser/wheelchair/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/wheelchair))
-		var/obj/item/wheelchair/D = W
+/obj/machinery/despenser/metaldetector/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/weapon/metaldetector))
+		var/obj/item/weapon/metaldetector/D = W
 		if(src.numofWC >=6)
 			user << "\red The [src] is full."
 			return
@@ -163,8 +163,7 @@
 			del(D)
 			numofWC++
 			update_icon()
-			user << "\blue You add a wheelchair to the despenser."
-*/
+			user << "\blue You add a metaldetector to the despenser."
 
 
 /obj/machinery/despenser/bodybag

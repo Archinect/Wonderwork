@@ -19,6 +19,9 @@
 	sanitized_text = replacetext(sanitized_text, "\"", "\\\"")
 	return sanitized_text
 
+/proc/format_table_name(var/table as text)
+	return sqlfdbktableprefix + table
+
 /*
  * Text sanitization
  */

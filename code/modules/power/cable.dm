@@ -185,6 +185,7 @@
 	var/amount = MAXCOIL
 	item_color = COLOR_RED
 	color = COLOR_RED
+	var/cable_tag = "red"
 	desc = "A coil of power cable."
 	throwforce = 10
 	w_class = 2.0
@@ -246,7 +247,7 @@
 			usr << "\red You need at least 15 lengths to make restraints!"
 			return
 		var/obj/item/weapon/handcuffs/cable/B = new /obj/item/weapon/handcuffs/cable(usr.loc)
-		B.icon_state = "cuff_[item_color]"
+		B.icon_state = "cuff_[cable_tag]"
 		usr << "\blue You wind some cable together to make some restraints."
 		src.use(15)
 	else
@@ -575,30 +576,37 @@ obj/structure/cable/proc/cableColor(var/colorC)
 /obj/item/weapon/cable_coil/yellow
 	item_color = COLOR_YELLOW
 	color = COLOR_YELLOW
+	cable_tag = "yellow"
 
 /obj/item/weapon/cable_coil/blue
 	item_color = COLOR_BLUE
 	color = COLOR_BLUE
+	cable_tag = "blue"
 
 /obj/item/weapon/cable_coil/green
 	item_color = COLOR_GREEN
 	color = COLOR_GREEN
+	cable_tag = "green"
 
 /obj/item/weapon/cable_coil/pink
 	item_color = COLOR_PINK
 	color = COLOR_PINK
+	cable_tag = "pink"
 
 /obj/item/weapon/cable_coil/orange
 	item_color = COLOR_ORANGE
 	color = COLOR_ORANGE
+	cable_tag = "orange"
 
 /obj/item/weapon/cable_coil/cyan
 	item_color = COLOR_CYAN
 	color = COLOR_CYAN
+	cable_tag = "cyan"
 
 /obj/item/weapon/cable_coil/white
 	item_color = COLOR_WHITE
 	color = COLOR_WHITE
+	cable_tag = "white"
 
 /obj/item/weapon/cable_coil/random/New()
 	item_color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)

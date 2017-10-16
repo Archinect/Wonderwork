@@ -478,7 +478,7 @@ var/global/list/obj/machinery/light/alllights = list()
 			if(on && (W.flags & CONDUCT))
 				//if(!user.mutations & COLD_RESISTANCE)
 				if (prob(12))
-					electrocute_mob(user, get_new_area(src), src, 0.3)
+					electrocute_mob(user, get_area_by_turf(src), src, 0.3)
 			broken()
 
 		else
@@ -514,13 +514,13 @@ var/global/list/obj/machinery/light/alllights = list()
 			s.start()
 			//if(!user.mutations & COLD_RESISTANCE)
 			if (prob(75))
-				electrocute_mob(user, get_new_area(src), src, rand(0.7,1.0))
+				electrocute_mob(user, get_area_by_turf(src), src, rand(0.7,1.0))
 
 
 // returns whether this light has power
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
-	var/area/A = get_new_area(src)
+	var/area/A = get_area_by_turf(src)
 	return A && A.lightswitch && (!A.requires_power || A.power_light)
 
 /obj/machinery/light/proc/flicker(var/amount = rand(10, 20))

@@ -165,6 +165,7 @@
 		if(honked)
 			temp = "You have been beaten! GAME OVER"
 		else if(emagged)
+			usr.gib()
 			explode()
 
 	blocked = 0
@@ -236,6 +237,7 @@
 	if(!emagged && !honked)
 		if(istype(I, /obj/item/weapon/card/emag))
 			reset()
+			user << "You turned on the Randy Sandy mode in [src]!"
 			emagged = 1
 
 			temp = "If you die in the game, you die for real!"

@@ -57,6 +57,7 @@ var/global/list/datum/stack_recipe/sandstone_recipes = list ( \
 
 var/global/list/datum/stack_recipe/diamond_recipes = list ( \
 	new/datum/stack_recipe("diamond door", /obj/structure/mineral_door/transparent/diamond, 10, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("diamond floor tile", /obj/item/stack/tile/diamond, 1, 4, 20), \
 	)
 
 /obj/item/stack/sheet/mineral/diamond/New(var/loc, var/amount=null)
@@ -83,6 +84,7 @@ var/global/list/datum/stack_recipe/diamond_recipes = list ( \
 var/global/list/datum/stack_recipe/uranium_recipes = list ( \
 	new/datum/stack_recipe("uranium door", /obj/structure/mineral_door/uranium, 10, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("uranium statue", /obj/structure/statue/uranium/eng, 10, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("uranium floor tile", /obj/item/stack/tile/uranium, 1, 4, 20), \
 	)
 
 /obj/item/stack/sheet/mineral/uranium/New(var/loc, var/amount=null)
@@ -109,6 +111,7 @@ var/global/list/datum/stack_recipe/uranium_recipes = list ( \
 var/global/list/datum/stack_recipe/plasma_recipes = list ( \
 	new/datum/stack_recipe("plasma door", /obj/structure/mineral_door/transparent/plasma, 10, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("plasma statue", /obj/structure/statue/plasma/scientist, 10, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("plasma floor tile", /obj/item/stack/tile/plasma, 1, 4, 20), \
 	)
 
 /obj/item/stack/sheet/mineral/plasma/New(var/loc, var/amount=null)
@@ -160,6 +163,7 @@ var/global/list/datum/stack_recipe/plastic_recipes = list ( \
 
 var/global/list/datum/stack_recipe/gold_recipes = list ( \
 	new/datum/stack_recipe("golden door", /obj/structure/mineral_door/gold, 10, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("gold floor tile", /obj/item/stack/tile/gold, 1, 4, 20), \
 	)
 
 /obj/item/stack/sheet/mineral/gold/New(var/loc, var/amount=null)
@@ -185,6 +189,7 @@ var/global/list/datum/stack_recipe/gold_recipes = list ( \
 
 var/global/list/datum/stack_recipe/silver_recipes = list ( \
 	new/datum/stack_recipe("silver door", /obj/structure/mineral_door/silver, 10, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("silver floor tile", /obj/item/stack/tile/silver, 1, 4, 20), \
 	)
 
 /obj/item/stack/sheet/mineral/silver/New(var/loc, var/amount=null)
@@ -210,6 +215,7 @@ var/global/list/datum/stack_recipe/silver_recipes = list ( \
 
 var/global/list/datum/stack_recipe/clown_recipes = list ( \
 	new/datum/stack_recipe("bananium statue", /obj/structure/statue/bananium/clown, 10, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("bananium floor tile", /obj/item/stack/tile/bananium, 1, 4, 20), \
 	)
 
 /obj/item/stack/sheet/mineral/clown/New(var/loc, var/amount=null)

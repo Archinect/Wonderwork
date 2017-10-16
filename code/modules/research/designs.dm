@@ -444,6 +444,106 @@ datum/design/spacepod_main
 	materials = list("$glass" = 2000, "sacid" = 20)
 	build_path = /obj/item/weapon/circuitboard/SPfab
 
+// Metacomputer
+datum/design/main_aiupload
+	name = "Mainframe Circuit Design (AI Upload)"
+	desc = "Allows for the construction of circuit boards used to build an AI Upload Console."
+	id = "main_aiupload"
+	req_tech = list("programming" = 4)
+	build_type = IMPRINTER
+	materials = list("$glass" = 2000, "sacid" = 20)
+	build_path = /obj/item/weapon/maincircuitboard/aiupload
+
+datum/design/main_borgupload
+	name = "Mainframe Circuit Design (Cyborg Upload)"
+	desc = "Allows for the construction of circuit boards used to build a Cyborg Upload Console."
+	id = "main_borgupload"
+	req_tech = list("programming" = 4)
+	build_type = IMPRINTER
+	materials = list("$glass" = 2000, "sacid" = 20)
+	build_path = /obj/item/weapon/maincircuitboard/borgupload
+
+datum/design/main_arcademachine
+	name = "Mainframe Circuit Design (Arcade Machine)"
+	desc = "Allows for the construction of circuit boards used to build a new arcade machine."
+	id = "main_arcademachine"
+	req_tech = list("programming" = 1)
+	build_type = IMPRINTER
+	materials = list("$glass" = 2000, "sacid" = 20)
+	build_path = /obj/item/weapon/maincircuitboard/arcade
+
+datum/design/main_robocontrol
+	name = "Mainframe Circuit Design (Robotics Control Console)"
+	desc = "Allows for the construction of circuit boards used to build a Robotics Control console."
+	id = "main_robocontrol"
+	req_tech = list("programming" = 4)
+	build_type = IMPRINTER
+	materials = list("$glass" = 2000, "sacid" = 20)
+	build_path = /obj/item/weapon/maincircuitboard/robotics
+
+datum/design/main_med_data
+	name = "Mainframe Circuit Design (Medical Records)"
+	desc = "Allows for the construction of circuit boards used to build a medical records console."
+	id = "main_med_data"
+	req_tech = list("programming" = 2)
+	build_type = IMPRINTER
+	materials = list("$glass" = 2000, "sacid" = 20)
+	build_path = /obj/item/weapon/maincircuitboard/med_data
+
+datum/design/main_operating
+	name = "Mainframe Circuit Design (Operating Computer)"
+	desc = "Allows for the construction of circuit boards used to build an operating computer console."
+	id = "main_operating"
+	req_tech = list("programming" = 2, "biotech" = 2)
+	build_type = IMPRINTER
+	materials = list("$glass" = 2000, "sacid" = 20)
+	build_path = /obj/item/weapon/maincircuitboard/operating
+
+datum/design/main_idcardconsole
+	name = "Mainframe Circuit Design (ID Computer)"
+	desc = "Allows for the construction of circuit boards used to build an ID computer."
+	id = "main_idcardconsole"
+	req_tech = list("programming" = 2)
+	build_type = IMPRINTER
+	materials = list("$glass" = 2000, "sacid" = 20)
+	build_path = /obj/item/weapon/maincircuitboard/card
+
+datum/design/main_crewconsole
+	name = "Mainframe Circuit Design (Crew monitoring computer)"
+	desc = "Allows for the construction of circuit boards used to build a Crew monitoring computer."
+	id = "main_crewconsole"
+	req_tech = list("programming" = 3, "magnets" = 2, "biotech" = 2)
+	build_type = IMPRINTER
+	materials = list("$glass" = 2000, "sacid" = 20)
+	build_path = /obj/item/weapon/maincircuitboard/crew
+
+datum/design/main_secdata
+	name = "Mainframe Circuit Design (Security Records Console)"
+	desc = "Allows for the construction of circuit boards used to build a security records console."
+	id = "main_secdata"
+	req_tech = list("programming" = 2)
+	build_type = IMPRINTER
+	materials = list("$glass" = 2000, "sacid" = 20)
+	build_path = /obj/item/weapon/maincircuitboard/secure_data
+
+datum/design/main_powermonitor
+	name = "Mainframe Circuit Design (Power Monitor)"
+	desc = "Allows for the construction of circuit boards used to build a new power monitor"
+	id = "main_powermonitor"
+	req_tech = list("programming" = 2)
+	build_type = IMPRINTER
+	materials = list("$glass" = 2000, "sacid" = 20)
+	build_path = /obj/item/weapon/maincircuitboard/powermonitor
+
+datum/design/main_atmosalerts
+	name = "Mainframe Circuit Design (Atmosphere Alert)"
+	desc = "Allows for the construction of circuit boards used to build an atmosphere alert console.."
+	id = "main_atmosalerts"
+	req_tech = list("programming" = 2)
+	build_type = IMPRINTER
+	materials = list("$glass" = 2000, "sacid" = 20)
+	build_path = /obj/item/weapon/maincircuitboard/atmos_alert
+
 ///////////////////////////////////
 //////////AI Module Disks//////////
 ///////////////////////////////////
@@ -1461,7 +1561,7 @@ datum/design/advmatsynthesizer
 	name = "Advanced Material Synthesizer"
 	desc = "A advanced device capable of producing very little material with a great deal of investment."
 	id = "advmatsynthesizer"
-	req_tech = list("materials" = 4, "engineering" = 5)
+	req_tech = list("materials" = 5, "engineering" = 5, "powerstorage" = 5)
 	build_type = PROTOLATHE
 	materials = list("$metal" = 3000, "$glass" = 2000)
 	build_path = /obj/item/device/material_synth/adv

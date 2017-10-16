@@ -238,21 +238,6 @@
 	name = "plaque"
 	icon_state = "plaque"
 
-/obj/effect/decal/warning_stripes/floor/carpet
-	name = "carpet"
-	icon = 'icons/turf/flooring/carpet.dmi'
-	icon_state = "carpet_edges"
-
-/obj/effect/decal/warning_stripes/floor/carpet/blue
-	name = "carpet"
-	icon = 'icons/turf/flooring/carpet.dmi'
-	icon_state = "bcarpet_edges"
-
-/obj/effect/decal/warning_stripes/floor/carpet/corners
-	name = "carpet"
-	icon = 'icons/turf/flooring/carpet.dmi'
-	icon_state = "carpet_corners"
-
 /obj/effect/decal/warning_stripes/floor/chapel
 	name = "chapel"
 	icon_state = "chapel"

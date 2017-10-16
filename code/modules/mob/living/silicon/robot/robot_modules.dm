@@ -4,7 +4,7 @@
 	icon_state = "cyborg_upgrade3"
 	w_class = 100.0
 	item_state = "electronic"
-	flags = FPRINT|TABLEPASS | CONDUCT
+	flags = FPRINT|TABLEPASS|CONDUCT
 
 	var/list/modules = list()
 	var/obj/item/emag = null

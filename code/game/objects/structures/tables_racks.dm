@@ -40,13 +40,13 @@
 					new /obj/item/weapon/table_parts/woodreinforced( get_turf(src.loc), 2 )
 			del(T)
 	update_icon()
-	for(var/direction in list(1,2,4,8,5,6,9,10))
+	for(var/direction in alldirs)
 		if(locate(/obj/structure/table,get_step(src,direction)))
 			var/obj/structure/table/T = locate(/obj/structure/table,get_step(src,direction))
 			T.update_icon()
 
 /obj/structure/table/Del()
-	for(var/direction in list(1,2,4,8,5,6,9,10))
+	for(var/direction in alldirs)
 		if(locate(/obj/structure/table,get_step(src,direction)))
 			var/obj/structure/table/T = locate(/obj/structure/table,get_step(src,direction))
 			T.update_icon()
@@ -61,7 +61,7 @@
 /obj/structure/table/update_icon()
 	spawn(2) //So it properly updates when deleting
 		var/dir_sum = 0
-		for(var/direction in list(1,2,4,8,5,6,9,10))
+		for(var/direction in alldirs)
 			var/skip_sum = 0
 			for(var/obj/structure/window/W in src.loc)
 				if(W.dir == direction) //So smooth tables don't go smooth through windows
@@ -256,7 +256,7 @@
 					icon_state = "tabledir2"
 				if(6)
 					icon_state = "tabledir3"
-		if (dir_sum in list(1,2,4,8,5,6,9,10))
+		if (dir_sum in alldirs)
 			dir = dir_sum
 		else
 			dir = 2
@@ -340,6 +340,10 @@
 /obj/structure/table/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
 	if (!W) return
 
+
+	if(isrobot(user))
+		return
+
 	if (istype(W, /obj/item/weapon/grab) && get_dist(src,user)<2)
 		var/obj/item/weapon/grab/G = W
 		if(G.state<2)
@@ -400,9 +404,6 @@
 			destroy()
 		return
 
-	if(isrobot(user))
-		return
-
 	if(istype(W, /obj/item/weapon/melee/energy/blade))
 		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
 		spark_system.set_up(5, 0, src.loc)
@@ -413,28 +414,15 @@
 			O.show_message("\blue The [src] was sliced apart by [user]!", 1, "\red You hear [src] coming apart.", 2)
 		destroy()
 
-//	user.drop_item(src)
-//	return
+	user.drop_item()
 
-	if(!isrobot(user) && !(W.flags & ABSTRACT)) //rip more parems rip in peace ;_;
-		user.drop_item()
-		if (W && W.loc)
-			W.Move(src.loc)
-			if (islist(params) && params["icon-y"] && params["icon-x"])
-				W.pixel_x = text2num(params["icon-x"]) - 16
-				W.pixel_y = text2num(params["icon-y"]) - 16
+	if (W && W.loc)
+		W.Move(src.loc)
+		if (islist(params) && params["icon-y"] && params["icon-x"])
+			W.pixel_x = text2num(params["icon-x"]) - 16
+			W.pixel_y = text2num(params["icon-y"]) - 16
 	return
 
-//	if(!(W.flags & ABSTRACT)) //rip more parems rip in peace ;_;
-//		var/list/click_params = params2list(params)
-//		if(user.drop_item(W, src.loc))
-//			W.Move(src.loc && click_params.len)
-//			//Center the icon where the user clicked.
-//			if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
-//				return
-//			//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
-//			W.pixel_x = Clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
-//			W.pixel_y = Clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
 
 /*
  * Wooden tables
@@ -489,6 +477,10 @@
 
 
 /obj/structure/table/reinforced/attackby(obj/item/weapon/W as obj, mob/user as mob)
+
+	if(isrobot(user))
+		return
+
 	if (istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
@@ -528,6 +520,10 @@
 
 
 /obj/structure/table/woodreinforced/attackby(obj/item/weapon/W as obj, mob/user as mob)
+
+	if(isrobot(user))
+		return
+
 	if (istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))

@@ -24,22 +24,26 @@
 				update_icon()
 				name = n
 
-
-
 /turf/simulated/floor/wood
 	name = "wooden floor"
+	icon = 'icons/turf/wood.dmi'
 	icon_state = "wood"
 	floor_tile = new/obj/item/stack/tile/wood
 
 /turf/simulated/floor/wood/old
-	name = "wooden floor"
 	icon_state = "woodold"
-	floor_tile = new/obj/item/stack/tile/wood
 
-/turf/simulated/floor/wood/oldest
-	name = "wooden floor"
-	icon_state = "woodnew"
-	floor_tile = new/obj/item/stack/tile/wood
+/turf/simulated/floor/wood/one
+	icon_state = "wood1"
+
+/turf/simulated/floor/wood/two
+	icon_state = "wood2"
+
+/turf/simulated/floor/wood/three
+	icon_state = "wood3"
+
+/turf/simulated/floor/wood/four
+	icon_state = "wood4"
 
 /turf/simulated/floor/vault
 	icon_state = "rockvault"
@@ -78,6 +82,7 @@
 
 /turf/simulated/floor/engine/cult
 	name = "engraved floor"
+	icon = 'icons/turf/cult.dmi'
 	icon_state = "cult"
 
 
@@ -117,6 +122,38 @@
 		..()
 		name = "plating"
 
+/turf/simulated/floor/plating/airless/asteroid
+	icon_state = "asteroidplating"
+	New()
+		..()
+		name = "plating"
+
+/turf/simulated/floor/plating/grilled
+	blocks_air = 1
+	icon_state = "grilled"
+	var/strict_typecheck = 1
+	var/tmp/border_type = /obj/structure/window
+
+/turf/simulated/floor/plating/grilled/New()
+	..()
+	icon_state = "plating"
+	var/type = /turf/simulated/floor/plating
+	if(strict_typecheck)
+		type = src.type
+	new /obj/structure/grille(src)
+	var/obj/structure/window/reinforced/W = null
+	for(var/dir in cardinal)
+		if(!istype(get_step(src,dir), type))
+			W = new border_type(src)
+			W.dir = dir
+	blocks_air = 0
+
+/turf/simulated/floor/plating/grilled/reinforced
+	border_type = /obj/structure/window/reinforced
+
+/turf/simulated/floor/plating/grilled/tinted
+	border_type = /obj/structure/window/reinforced/tinted
+
 /turf/simulated/floor/bluegrid
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "bcircuit"
@@ -132,6 +169,46 @@
 /turf/simulated/floor/indigogrid
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "icircuit"
+
+/turf/simulated/floor/whitegrid
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "wcircuit"
+
+/turf/simulated/floor/gold
+	name = "gold floor tiles"
+	icon = 'icons/turf/other.dmi'
+	icon_state = "gold"
+	floor_tile = new /obj/item/stack/tile/gold
+
+/turf/simulated/floor/plasma
+	name = "plasma floor tiles"
+	icon = 'icons/turf/other.dmi'
+	icon_state = "plasma"
+	floor_tile = new /obj/item/stack/tile/plasma
+
+/turf/simulated/floor/silver
+	name = "silver floor tiles"
+	icon = 'icons/turf/other.dmi'
+	icon_state = "silver"
+	floor_tile = new /obj/item/stack/tile/silver
+
+/turf/simulated/floor/bananium
+	name = "bananium floor tiles"
+	icon = 'icons/turf/other.dmi'
+	icon_state = "bananium"
+	floor_tile = new /obj/item/stack/tile/bananium
+
+/turf/simulated/floor/uranium
+	name = "uranium floor tiles"
+	icon = 'icons/turf/other.dmi'
+	icon_state = "uranium"
+	floor_tile = new /obj/item/stack/tile/uranium
+
+/turf/simulated/floor/diamond
+	name = "diamond floor tiles"
+	icon = 'icons/turf/other.dmi'
+	icon_state = "diamond"
+	floor_tile = new /obj/item/stack/tile/diamond
 
 /turf/simulated/shuttle
 	name = "shuttle"
@@ -160,78 +237,26 @@
 	name = "Brig floor"        // Also added it into the 2x3 brig area of the shuttle.
 	icon_state = "floor4"
 
-/turf/simulated/beach
+/turf/simulated/floor/beach
 	name = "Beach"
 	icon = 'icons/misc/beach.dmi'
 
-/turf/simulated/beach/sand
+/turf/simulated/floor/beach/sand
 	name = "Sand"
 	icon_state = "sand"
-	icon = 'icons/misc/beach.dmi'
 
-/turf/simulated/beach/coastline
+/turf/simulated/floor/beach/coastline
 	name = "Coastline"
 	icon = 'icons/misc/beach2.dmi'
 	icon_state = "sandwater"
 
-/turf/simulated/beach/coastline/newcoastline
-	name = "Coastline"
-	icon = 'icons/misc/beach.dmi'
-	icon = 'icons/misc/beach2.dmi'
-	icon_state = "beach"
-
-/turf/simulated/beach/water
+/turf/simulated/floor/beach/water
 	name = "Water"
 	icon_state = "water"
 
-/turf/simulated/beach/sea
-	name = "Water"
-	icon_state = "seashallow"
-
-/turf/simulated/beach/
-	name = "Beach"
-	icon = 'icons/misc/beach.dmi'
-
-/turf/simulated/beach/sand
-	name = "Sand"
-	icon_state = "sand"
-
-/turf/simulated/beach/desert
-	name = "Sand"
-	icon_state = "desert"
-	luminosity = 10
-	temperature = 323.15
-
-/turf/simulated/beach/desert1
-	name = "Sand"
-	icon_state = "desert8"
-	luminosity = 0
-	temperature = 323.15
-
-/turf/simulated/beach/dgrass
-	name = "Grass"
-	icon_state = "dgrass0"
-
-/turf/simulated/beach/grass
-	name = "Grass"
-	icon_state = "fullgrass0"
-
-/turf/simulated/beach/desertdug
-	name = "Sand"
-	icon_state = "desert_dug"
-
-/turf/simulated/beach/coastline
-	name = "Coastline"
-	icon = 'icons/misc/beach2.dmi'
-	icon_state = "sandwater"
-
-/turf/simulated/beach/water/New()
+/turf/simulated/floor/beach/water/New()
 	..()
-	overlays += image("icon"='icons/misc/beach.dmi',"icon_state"="water2","layer"=MOB_LAYER+0.1)
-
-/turf/simulated/beach/sea/New()
-	..()
-	overlays += image("icon"='icons/misc/beach.dmi',"icon_state"="seashallow","layer"=MOB_LAYER+0.1)
+	overlays += image("icon"='icons/misc/beach.dmi',"icon_state"="water5","layer"=MOB_LAYER+0.1)
 
 /turf/simulated/floor/grass
 	name = "Grass patch"
@@ -253,6 +278,7 @@
 /turf/simulated/floor/carpet
 	name = "Carpet"
 	icon_state = "carpet"
+	icon = 'icons/turf/carpet.dmi'
 	floor_tile = new/obj/item/stack/tile/carpet
 
 	New()
@@ -263,26 +289,18 @@
 		spawn(4)
 			if(src)
 				update_icon()
-				for(var/direction in list(1,2,4,8,5,6,9,10))
+				for(var/direction in alldirs)
 					if(istype(get_step(src,direction),/turf/simulated/floor))
 						var/turf/simulated/floor/FF = get_step(src,direction)
 						FF.update_icon() //so siding get updated properly
 
 /turf/simulated/floor/plating/ironsand
 	name = "Iron Sand"
-	icon_state = "ironsand0"
+	icon = 'icons/turf/asteroid.dmi'
 
 	New()
-		floor_tile.New() //I guess New() isn't ran on objects spawned without the definition of a turf to house them, ah well.
-		icon_state = "ironsand[rand(1,15)]"
 		..()
-		spawn(4)
-			if(src)
-				update_icon()
-				for(var/direction in cardinal)
-					if(istype(get_step(src,direction),/turf/simulated/floor/plating))
-						var/turf/simulated/floor/plating/FF = get_step(src,direction)
-						FF.update_icon() //so siding get updated properly
+		icon_state = "ironsand[rand(1,15)]"
 
 /turf/simulated/floor/plating/snow
 	name = "snow"
@@ -303,3 +321,62 @@
 		icon = 'icons/turf/space.dmi'
 		icon_state = "[pick("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25")]"
 		..()
+
+
+/turf/simulated/floor/fakecarpet
+	name = "Carpet"
+	icon = 'icons/turf/carpet.dmi'
+
+/turf/simulated/floor/fakecarpet/grimy
+	icon_state = "grimy"
+	floor_tile = new/obj/item/stack/tile/fakecarpet/grimy
+
+/turf/simulated/floor/fakecarpet/arcade
+	name = "Arcade carpet"
+	icon_state = "arcade"
+	icon = 'icons/turf/carpet.dmi'
+	floor_tile = new/obj/item/stack/tile/fakecarpet/arcade
+
+/turf/simulated/floor/fakecarpet/fakered
+	icon_state = "fakered"
+	floor_tile = new/obj/item/stack/tile/fakecarpet/fakered
+
+/turf/simulated/floor/fakecarpet/fakedarkred
+	icon_state = "fakedarkred"
+	floor_tile = new/obj/item/stack/tile/fakecarpet/fakedarkred
+
+/turf/simulated/floor/fakecarpet/fakeblack
+	icon_state = "fakeblack"
+	floor_tile = new/obj/item/stack/tile/fakecarpet/fakeblack
+
+/turf/simulated/floor/fakecarpet/fakegray
+	icon_state = "fakegray"
+	floor_tile = new/obj/item/stack/tile/fakecarpet/fakegray
+
+/turf/simulated/floor/fakecarpet/fakegreen
+	icon_state = "fakegreen"
+	floor_tile = new/obj/item/stack/tile/fakecarpet/fakegreen
+
+/turf/simulated/floor/fakecarpet/fakebrown
+	icon_state = "fakebrown"
+	floor_tile = new/obj/item/stack/tile/fakecarpet/fakebrown
+
+/turf/simulated/floor/fakecarpet/fakedarkbrown
+	icon_state = "fakedarkbrown"
+	floor_tile = new/obj/item/stack/tile/fakecarpet/fakedarkbrown
+
+/turf/simulated/floor/fakecarpet/fakedarkblue
+	icon_state = "fakedarkblue"
+	floor_tile = new/obj/item/stack/tile/fakecarpet/fakedarkblue
+
+/turf/simulated/floor/fakecarpet/fakeblue
+	icon_state = "fakeblue"
+	floor_tile = new/obj/item/stack/tile/fakecarpet/fakeblue
+
+/turf/simulated/floor/fakecarpet/fakewhite
+	icon_state = "fakewhite"
+	floor_tile = new/obj/item/stack/tile/fakecarpet/fakewhite
+
+/turf/simulated/floor/fakecarpet/fakecyan
+	icon_state = "fakecyan"
+	floor_tile = new/obj/item/stack/tile/fakecarpet/fakecyan

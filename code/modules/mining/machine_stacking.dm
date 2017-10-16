@@ -63,7 +63,51 @@
 	if(machine.ore_adamantine)
 		dat += text ("Adamantine: [machine.ore_adamantine] <A href='?src=\ref[src];release=adamantine'>Release</A><br>")
 	if(machine.ore_mythril)
-		dat += text ("Mythril: [machine.ore_mythril] <A href='?src=\ref[src];release=adamantine'>Release</A><br>")
+		dat += text ("Mythril: [machine.ore_mythril] <A href='?src=\ref[src];release=mythril'>Release</A><br>")
+	if(machine.ore_phazon)
+		dat += text ("Phazon: [machine.ore_phazon] <A href='?src=\ref[src];release=phazon'>Release</A><br>")
+	if(machine.ore_aluminum)
+		dat += text ("Aluminum: [machine.ore_aluminum] <A href='?src=\ref[src];release=aluminum'>Release</A><br>")
+	if(machine.ore_triberium)
+		dat += text ("Triberium: [machine.ore_triberium] <A href='?src=\ref[src];release=triberium'>Release</A><br>")
+	if(machine.ore_mauxite)
+		dat += text ("Mauxite: [machine.ore_mauxite] <A href='?src=\ref[src];release=mauxite'>Release</A><br>")
+	if(machine.ore_molitz)
+		dat += text ("Molitz: [machine.ore_molitz] <A href='?src=\ref[src];release=molitz'>Release</A><br>")
+	if(machine.ore_pharosium)
+		dat += text ("Pharosium: [machine.ore_pharosium] <A href='?src=\ref[src];release=pharosium'>Release</A><br>")
+	if(machine.ore_cobryl)
+		dat += text ("Cobryl: [machine.ore_cobryl] <A href='?src=\ref[src];release=cobryl'>Release</A><br>")
+	if(machine.ore_char)
+		dat += text ("Char: [machine.ore_char] <A href='?src=\ref[src];release=char'>Release</A><br>")
+	if(machine.ore_claretine)
+		dat += text ("Claretine: [machine.ore_claretine] <A href='?src=\ref[src];release=claretine'>Release</A><br>")
+	if(machine.ore_bohrum)
+		dat += text ("Bohrum: [machine.ore_bohrum] <A href='?src=\ref[src];release=bohrum'>Release</A><br>")
+	if(machine.ore_syreline)
+		dat += text ("Syreline: [machine.ore_syreline] <A href='?src=\ref[src];release=syreline'>Release</A><br>")
+	if(machine.ore_erebite)
+		dat += text ("Erebite: [machine.ore_erebite] <A href='?src=\ref[src];release=erebite'>Release</A><br>")
+	if(machine.ore_cerenkite)
+		dat += text ("Cerenkite: [machine.ore_cerenkite] <A href='?src=\ref[src];release=cerenkite'>Release</A><br>")
+	if(machine.ore_cytine)
+		dat += text ("Cytine: [machine.ore_cytine] <A href='?src=\ref[src];release=cytine'>Release</A><br>")
+	if(machine.ore_coal)
+		dat += text ("Coal: [machine.ore_coal] <A href='?src=\ref[src];release=coal'>Release</A><br>")
+	if(machine.ore_ruvium)
+		dat += text ("Ruvium: [machine.ore_ruvium] <A href='?src=\ref[src];release=ruvium'>Release</A><br>")
+	if(machine.ore_lovite)
+		dat += text ("Lovite: [machine.ore_lovite] <A href='?src=\ref[src];release=lovite'>Release</A><br>")
+	if(machine.ore_telecrystal)
+		dat += text ("Telecrystal: [machine.ore_telecrystal] <A href='?src=\ref[src];release=telecrystal'>Release</A><br>")
+	if(machine.ore_martian)
+		dat += text ("Martian: [machine.ore_martian] <A href='?src=\ref[src];release=martian'>Release</A><br>")
+	if(machine.ore_eldritch)
+		dat += text ("Eldritch: [machine.ore_eldritch] <A href='?src=\ref[src];release=eldritch'>Release</A><br>")
+	if(machine.ore_ice)
+		dat += text ("Ice: [machine.ore_ice] <A href='?src=\ref[src];release=ice'>Release</A><br>")
+	if(machine.ore_uqill)
+		dat += text ("Uqill: [machine.ore_uqill] <A href='?src=\ref[src];release=uqill'>Release</A><br>")
 
 	dat += text("<br>Stacking: [machine.stack_amt]<br><br>")
 
@@ -173,6 +217,138 @@
 					G.amount = machine.ore_mythril
 					G.loc = machine.output.loc
 					machine.ore_mythril = 0
+			if ("phazon")
+				if (machine.ore_phazon > 0)
+					var/obj/item/stack/sheet/mineral/phazon/G = new /obj/item/stack/sheet/mineral/phazon
+					G.amount = machine.ore_phazon
+					G.loc = machine.output.loc
+					machine.ore_phazon = 0
+			if ("aluminum")
+				if (machine.ore_aluminum > 0)
+					var/obj/item/stack/sheet/mineral/aluminum/G = new /obj/item/stack/sheet/mineral/aluminum
+					G.amount = machine.ore_aluminum
+					G.loc = machine.output.loc
+					machine.ore_aluminum = 0
+			if ("triberium")
+				if (machine.ore_triberium > 0)
+					var/obj/item/stack/sheet/mineral/triberium/G = new /obj/item/stack/sheet/mineral/triberium
+					G.amount = machine.ore_triberium
+					G.loc = machine.output.loc
+					machine.ore_triberium = 0
+			if ("mauxite")
+				if (machine.ore_mauxite > 0)
+					var/obj/item/stack/sheet/mineral/mauxite/G = new /obj/item/stack/sheet/mineral/mauxite
+					G.amount = machine.ore_mauxite
+					G.loc = machine.output.loc
+					machine.ore_mauxite = 0
+			if ("molitz")
+				if (machine.ore_molitz > 0)
+					var/obj/item/stack/sheet/mineral/molitz/G = new /obj/item/stack/sheet/mineral/molitz
+					G.amount = machine.ore_molitz
+					G.loc = machine.output.loc
+					machine.ore_molitz = 0
+			if ("pharosium")
+				if (machine.ore_pharosium > 0)
+					var/obj/item/stack/sheet/mineral/pharosium/G = new /obj/item/stack/sheet/mineral/pharosium
+					G.amount = machine.ore_pharosium
+					G.loc = machine.output.loc
+					machine.ore_pharosium = 0
+			if ("cobryl")
+				if (machine.ore_cobryl > 0)
+					var/obj/item/stack/sheet/mineral/cobryl/G = new /obj/item/stack/sheet/mineral/cobryl
+					G.amount = machine.ore_cobryl
+					G.loc = machine.output.loc
+					machine.ore_cobryl = 0
+			if ("char")
+				if (machine.ore_char > 0)
+					var/obj/item/stack/sheet/mineral/char/G = new /obj/item/stack/sheet/mineral/char
+					G.amount = machine.ore_mythril
+					G.loc = machine.output.loc
+					machine.ore_char = 0
+			if ("claretine")
+				if (machine.ore_claretine > 0)
+					var/obj/item/stack/sheet/mineral/claretine/G = new /obj/item/stack/sheet/mineral/claretine
+					G.amount = machine.ore_claretine
+					G.loc = machine.output.loc
+					machine.ore_claretine = 0
+			if ("bohrum")
+				if (machine.ore_bohrum > 0)
+					var/obj/item/stack/sheet/mineral/bohrum/G = new /obj/item/stack/sheet/mineral/bohrum
+					G.amount = machine.ore_bohrum
+					G.loc = machine.output.loc
+					machine.ore_bohrum = 0
+			if ("syreline")
+				if (machine.ore_syreline > 0)
+					var/obj/item/stack/sheet/mineral/syreline/G = new /obj/item/stack/sheet/mineral/syreline
+					G.amount = machine.ore_syreline
+					G.loc = machine.output.loc
+					machine.ore_syreline = 0
+			if ("erebite")
+				if (machine.ore_erebite > 0)
+					var/obj/item/stack/sheet/mineral/erebite/G = new /obj/item/stack/sheet/mineral/erebite
+					G.amount = machine.ore_erebite
+					G.loc = machine.output.loc
+					machine.ore_erebite = 0
+			if ("cerenkite")
+				if (machine.ore_cerenkite > 0)
+					var/obj/item/stack/sheet/mineral/cerenkite/G = new /obj/item/stack/sheet/mineral/cerenkite
+					G.amount = machine.ore_cerenkite
+					G.loc = machine.output.loc
+					machine.ore_cerenkite = 0
+			if ("cytine")
+				if (machine.ore_cytine > 0)
+					var/obj/item/stack/sheet/mineral/cytine/G = new /obj/item/stack/sheet/mineral/cytine
+					G.amount = machine.ore_cytine
+					G.loc = machine.output.loc
+					machine.ore_cytine = 0
+//			if ("coal")
+//				if (machine.ore_coal > 0)
+//					var/obj/item/stack/sheet/mineral/coal/G = new /obj/item/stack/sheet/mineral/coal
+//					G.amount = machine.ore_coal
+//					G.loc = machine.output.loc
+//					machine.ore_coal = 0
+			if ("ruvium")
+				if (machine.ore_ruvium > 0)
+					var/obj/item/stack/sheet/mineral/ruvium/G = new /obj/item/stack/sheet/mineral/ruvium
+					G.amount = machine.ore_ruvium
+					G.loc = machine.output.loc
+					machine.ore_ruvium = 0
+			if ("lovite")
+				if (machine.ore_lovite > 0)
+					var/obj/item/stack/sheet/mineral/lovite/G = new /obj/item/stack/sheet/mineral/lovite
+					G.amount = machine.ore_lovite
+					G.loc = machine.output.loc
+					machine.ore_lovite = 0
+			if ("telecrystal")
+				if (machine.ore_telecrystal > 0)
+					var/obj/item/stack/sheet/mineral/telecrystal/G = new /obj/item/stack/sheet/mineral/telecrystal
+					G.amount = machine.ore_telecrystal
+					G.loc = machine.output.loc
+					machine.ore_telecrystal = 0
+			if ("martian")
+				if (machine.ore_martian > 0)
+					var/obj/item/stack/sheet/mineral/martian/G = new /obj/item/stack/sheet/mineral/martian
+					G.amount = machine.ore_martian
+					G.loc = machine.output.loc
+					machine.ore_martian = 0
+			if ("eldritch")
+				if (machine.ore_eldritch > 0)
+					var/obj/item/stack/sheet/mineral/eldritch/G = new /obj/item/stack/sheet/mineral/eldritch
+					G.amount = machine.ore_eldritch
+					G.loc = machine.output.loc
+					machine.ore_eldritch = 0
+			if ("ice")
+				if (machine.ore_ice > 0)
+					var/obj/item/stack/sheet/mineral/ice/G = new /obj/item/stack/sheet/mineral/ice
+					G.amount = machine.ore_ice
+					G.loc = machine.output.loc
+					machine.ore_ice = 0
+			if ("uqill")
+				if (machine.ore_uqill > 0)
+					var/obj/item/stack/sheet/mineral/uqill/G = new /obj/item/stack/sheet/mineral/uqill
+					G.amount = machine.ore_uqill
+					G.loc = machine.output.loc
+					machine.ore_uqill = 0
 	src.updateUsrDialog()
 	return
 
@@ -207,6 +383,28 @@
 	var/ore_leather = 0;
 	var/ore_adamantine = 0;
 	var/ore_mythril = 0;
+	var/ore_phazon = 0
+	var/ore_aluminum = 0
+	var/ore_triberium = 0
+	var/ore_mauxite = 0
+	var/ore_molitz = 0
+	var/ore_pharosium = 0
+	var/ore_cobryl = 0
+	var/ore_char = 0
+	var/ore_claretine = 0
+	var/ore_bohrum = 0
+	var/ore_syreline = 0
+	var/ore_erebite = 0
+	var/ore_cerenkite = 0
+	var/ore_cytine = 0
+	var/ore_coal = 0
+	var/ore_ruvium = 0
+	var/ore_lovite = 0
+	var/ore_telecrystal = 0
+	var/ore_martian = 0
+	var/ore_eldritch = 0
+	var/ore_ice = 0
+	var/ore_uqill = 0
 	var/stack_amt = 50; //ammount to stack before releassing
 
 /obj/machinery/mineral/stacking_machine/New()
@@ -289,6 +487,94 @@
 				continue
 			if (istype(O,/obj/item/stack/sheet/leather))
 				ore_leather+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/phazon))
+				ore_phazon+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/aluminum))
+				ore_aluminum+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/triberium))
+				ore_triberium+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/mauxite))
+				ore_mauxite+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/molitz))
+				ore_molitz+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/pharosium))
+				ore_pharosium+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/cobryl))
+				ore_cobryl+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/char))
+				ore_char+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/claretine))
+				ore_claretine+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/bohrum))
+				ore_bohrum+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/syreline))
+				ore_syreline+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/erebite))
+				ore_erebite+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/cerenkite))
+				ore_cerenkite+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/cytine))
+				ore_cytine+= O:amount
+				del(O)
+				continue
+//			if (istype(O,/obj/item/stack/sheet/mineral/coal))
+//				ore_coal+= O:amount
+//				del(O)
+//				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/ruvium))
+				ore_ruvium+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/lovite))
+				ore_lovite+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/telecrystal))
+				ore_telecrystal+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/martian))
+				ore_martian+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/eldritch))
+				ore_eldritch+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/ice))
+				ore_ice+= O:amount
+				del(O)
+				continue
+			if (istype(O,/obj/item/stack/sheet/mineral/uqill))
+				ore_uqill+= O:amount
 				del(O)
 				continue
 			if (istype(O,/obj/item/weapon/ore/slag))
@@ -390,5 +676,137 @@
 		G.amount = stack_amt
 		G.loc = output.loc
 		ore_mythril -= stack_amt
+		return
+	if (ore_phazon >= stack_amt)
+		var/obj/item/stack/sheet/mineral/phazon/G = new /obj/item/stack/sheet/mineral/phazon
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_phazon -= stack_amt
+		return
+	if (ore_aluminum >= stack_amt)
+		var/obj/item/stack/sheet/mineral/aluminum/G = new /obj/item/stack/sheet/mineral/aluminum
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_aluminum -= stack_amt
+		return
+	if (ore_triberium >= stack_amt)
+		var/obj/item/stack/sheet/mineral/triberium/G = new /obj/item/stack/sheet/mineral/triberium
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_triberium -= stack_amt
+		return
+	if (ore_mauxite >= stack_amt)
+		var/obj/item/stack/sheet/mineral/mauxite/G = new /obj/item/stack/sheet/mineral/mauxite
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_mauxite -= stack_amt
+		return
+	if (ore_molitz >= stack_amt)
+		var/obj/item/stack/sheet/mineral/molitz/G = new /obj/item/stack/sheet/mineral/molitz
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_molitz -= stack_amt
+		return
+	if (ore_pharosium >= stack_amt)
+		var/obj/item/stack/sheet/mineral/pharosium/G = new /obj/item/stack/sheet/mineral/pharosium
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_pharosium -= stack_amt
+		return
+	if (ore_cobryl >= stack_amt)
+		var/obj/item/stack/sheet/mineral/cobryl/G = new /obj/item/stack/sheet/mineral/cobryl
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_cobryl -= stack_amt
+		return
+	if (ore_char >= stack_amt)
+		var/obj/item/stack/sheet/mineral/char/G = new /obj/item/stack/sheet/mineral/char
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_char -= stack_amt
+		return
+	if (ore_claretine >= stack_amt)
+		var/obj/item/stack/sheet/mineral/claretine/G = new /obj/item/stack/sheet/mineral/claretine
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_claretine -= stack_amt
+		return
+	if (ore_cytine >= stack_amt)
+		var/obj/item/stack/sheet/mineral/cytine/G = new /obj/item/stack/sheet/mineral/cytine
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_cytine -= stack_amt
+		return
+	if (ore_bohrum >= stack_amt)
+		var/obj/item/stack/sheet/mineral/bohrum/G = new /obj/item/stack/sheet/mineral/bohrum
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_bohrum -= stack_amt
+		return
+	if (ore_syreline >= stack_amt)
+		var/obj/item/stack/sheet/mineral/syreline/G = new /obj/item/stack/sheet/mineral/syreline
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_syreline -= stack_amt
+		return
+	if (ore_erebite >= stack_amt)
+		var/obj/item/stack/sheet/mineral/erebite/G = new /obj/item/stack/sheet/mineral/erebite
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_erebite -= stack_amt
+		return
+	if (ore_cerenkite >= stack_amt)
+		var/obj/item/stack/sheet/mineral/cerenkite/G = new /obj/item/stack/sheet/mineral/cerenkite
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_cerenkite -= stack_amt
+		return
+//	if (ore_coal >= stack_amt)
+//		var/obj/item/stack/sheet/mineral/coal/G = new /obj/item/stack/sheet/mineral/coal
+//		G.amount = stack_amt
+//		G.loc = output.loc
+//		ore_coal -= stack_amt
+//		return
+	if (ore_ruvium >= stack_amt)
+		var/obj/item/stack/sheet/mineral/ruvium/G = new /obj/item/stack/sheet/mineral/ruvium
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_ruvium -= stack_amt
+		return
+	if (ore_lovite >= stack_amt)
+		var/obj/item/stack/sheet/mineral/lovite/G = new /obj/item/stack/sheet/mineral/lovite
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_lovite -= stack_amt
+		return
+	if (ore_telecrystal >= stack_amt)
+		var/obj/item/stack/sheet/mineral/telecrystal/G = new /obj/item/stack/sheet/mineral/telecrystal
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_telecrystal -= stack_amt
+		return
+	if (ore_martian >= stack_amt)
+		var/obj/item/stack/sheet/mineral/martian/G = new /obj/item/stack/sheet/mineral/martian
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_martian -= stack_amt
+		return
+	if (ore_eldritch >= stack_amt)
+		var/obj/item/stack/sheet/mineral/eldritch/G = new /obj/item/stack/sheet/mineral/eldritch
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_eldritch -= stack_amt
+		return
+	if (ore_ice >= stack_amt)
+		var/obj/item/stack/sheet/mineral/ice/G = new /obj/item/stack/sheet/mineral/ice
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_ice -= stack_amt
+		return
+	if (ore_uqill >= stack_amt)
+		var/obj/item/stack/sheet/mineral/uqill/G = new /obj/item/stack/sheet/mineral/uqill
+		G.amount = stack_amt
+		G.loc = output.loc
+		ore_uqill -= stack_amt
 		return
 	return

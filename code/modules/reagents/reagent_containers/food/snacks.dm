@@ -99,7 +99,7 @@
 
 	return 0
 
-/obj/item/weapon/reagent_containers/food/snacks/afterattack(obj/target, mob/user , proximity_flag, flag, params)
+/obj/item/weapon/reagent_containers/food/snacks/afterattack(atom/target, mob/user, proximity_flag, params)
 	if(istype(target, /obj/structure/table))
 		var/list/click_params = params2list(params)
 		//Center the icon where the user clicked.

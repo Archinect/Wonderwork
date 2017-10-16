@@ -380,60 +380,60 @@ Alien plants should do something if theres a lot of poison
 	var/health = 100
 	var/status = GROWING //can be GROWING, GROWN or BURST; all mutually exclusive
 
-	New()
-		if(aliens_allowed)
-			..()
-			spawn(rand(MIN_GROWTH_TIME,MAX_GROWTH_TIME))
-				Grow()
-		else
-			del(src)
+/obj/effect/alien/egg/New()
+	if(aliens_allowed)
+		..()
+		spawn(rand(MIN_GROWTH_TIME,MAX_GROWTH_TIME))
+			Grow()
+	else
+		del(src)
 
-	attack_paw(user as mob)
-		if(isalien(user))
-			switch(status)
-				if(BURST)
-					user << "\red You clear the hatched egg."
-					del(src)
-					return
-				if(GROWING)
-					user << "\red The child is not developed yet."
-					return
-				if(GROWN)
-					user << "\red You retrieve the child."
-					Burst(0)
-					return
-		else
-			return attack_hand(user)
+/obj/effect/alien/egg/attack_paw(user as mob)
+	if(isalien(user))
+		switch(status)
+			if(BURST)
+				user << "\red You clear the hatched egg."
+				del(src)
+				return
+			if(GROWING)
+				user << "\red The child is not developed yet."
+				return
+			if(GROWN)
+				user << "\red You retrieve the child."
+				Burst(0)
+				return
+	else
+		return attack_hand(user)
 
-	attack_hand(user as mob)
-		user << "It feels slimy."
-		return
+/obj/effect/alien/egg/attack_hand(user as mob)
+	user << "It feels slimy."
+	return
 
-	proc/GetFacehugger()
-		return locate(/obj/item/clothing/mask/facehugger) in contents
+/obj/effect/alien/egg/proc/GetFacehugger()
+	return locate(/obj/item/clothing/mask/facehugger) in contents
 
-	proc/Grow()
-		icon_state = "egg"
-		status = GROWN
-		new /obj/item/clothing/mask/facehugger(src)
-		return
+/obj/effect/alien/egg/proc/Grow()
+	icon_state = "egg"
+	status = GROWN
+	new /obj/item/clothing/mask/facehugger(src)
+	return
 
-	proc/Burst(var/kill = 1) //drops and kills the hugger if any is remaining
-		if(status == GROWN || status == GROWING)
-			var/obj/item/clothing/mask/facehugger/child = GetFacehugger()
-			icon_state = "egg_hatched"
-			flick("egg_opening", src)
-			status = BURSTING
-			spawn(15)
-				status = BURST
-				loc.contents += child//need to write the code for giving it to the alien later
-				if(kill && istype(child))
-					child.Die()
-				else
-					for(var/mob/M in range(1,src))
-						if(CanHug(M))
-							child.Attach(M)
-							break
+/obj/effect/alien/egg/proc/Burst(var/kill = 1) //drops and kills the hugger if any is remaining
+	if(status == GROWN || status == GROWING)
+		var/obj/item/clothing/mask/facehugger/child = GetFacehugger()
+		icon_state = "egg_hatched"
+		flick("egg_opening", src)
+		status = BURSTING
+		spawn(15)
+			status = BURST
+			loc.contents += child//need to write the code for giving it to the alien later
+			if(kill && istype(child))
+				child.Die()
+			else
+				for(var/mob/M in range(1,src))
+					if(CanHug(M))
+						child.Attach(M)
+						break
 
 
 /obj/effect/alien/egg/bullet_act(var/obj/item/projectile/Proj)
@@ -441,7 +441,6 @@ Alien plants should do something if theres a lot of poison
 	..()
 	healthcheck()
 	return
-
 
 /obj/effect/alien/egg/attackby(var/obj/item/weapon/W, var/mob/user)
 	if(health <= 0)
@@ -461,7 +460,6 @@ Alien plants should do something if theres a lot of poison
 
 	src.health -= damage
 	src.healthcheck()
-
 
 /obj/effect/alien/egg/proc/healthcheck()
 	if(health <= 0)

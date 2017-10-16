@@ -1,6 +1,5 @@
 var/savefile/Banlistjob
 
-
 /proc/_jobban_isbanned(var/client/clientvar, var/rank)
 	if(!clientvar) return 1
 	ClearTempbansjob()
@@ -205,17 +204,16 @@ var/savefile/Banlistjob
 
 /datum/admins/proc/unjobbanpanel()
 	var/count = 0
-	var/bans = ""
-	for (var/i = 1; i <= length(jobban_keylist); i++)
-		var/list/data = text2list(jobban_keylist[i], " ")
-		bans += "<a href='?src=\ref[src];removejobban=["[data[1]] [data[2]] [data[3]]"]'>(U)</a>"
-		bans += "[data[1]] - [data[3]] Reason: [data[5]] <br>"
-	//	if( findtext(jobban_keylist[i], "[X]") )
-	//		jobban_keylist.Remove(jobban_keylist[i])
-	//		jobban_savebanfile()
-	//		return 1
-	return 0
-	var/dat = "<HR><B>Bans:</B> <FONT COLOR=blue>(U) = Unban , </FONT> - <FONT COLOR=green>([count] Bans)</FONT><HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >[bans]"
+	var/dat
+	//var/dat = "<HR><B>Unban Player:</B> \blue(U) = Unban , (E) = Edit Ban\green (Total<HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >"
+	Banlistjob.cd = "/base"
+	for (var/A in Banlistjob.dir)
+		count++
+		Banlistjob.cd = "/base/[A]"
+		dat += text("<tr><td><A href='?src=\ref[src];unjobbanf=[Banlistjob["key"]][Banlistjob["id"]][Banlistjob["rank"]]'>(U)</A> Key: <B>[Banlistjob["key"]] </B>Rank: <B>[Banlistjob["rank"]]</B></td><td> ([Banlistjob["temp"] ? "[GetBanExpjob(Banlistjob["minutes"]) ? GetBanExpjob(Banlistjob["minutes"]) : "Removal pending" ]" : "Permaban"])</td><td>(By: [Banlistjob["bannedby"]])</td><td>(Reason: [Banlistjob["reason"]])</td></tr>")
+
+	dat += "</table>"
+	dat = "<HR><B>Bans:</B> <FONT COLOR=blue>(U) = Unban , </FONT> - <FONT COLOR=green>([count] Bans)</FONT><HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >[dat]"
 	usr << browse(dat, "window=unbanp;size=875x400")
 
 /*/datum/admins/proc/permjobban(ckey, computerid, reason, bannedby, temp, minutes, rank)
