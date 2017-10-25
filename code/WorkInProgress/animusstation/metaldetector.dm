@@ -42,10 +42,19 @@
 	if(istype(W, /obj/item/weapon/card/id))
 		user << "<span class='notice'>You conducted a card on cardreader.</span>"
 		if(src.check_access(W,list("1", "2", "3", "20", "57", "58", "30", "56","40")))
-			if(access)
-				access = 0
-			else
+			if(!access)
 				access = 1
+				for (var/mob/O in viewers(O, null))
+					O << " <b>[src.name]</b> beeps, \"Access granted.\""
+			else
+				access = null
+				for (var/mob/O in viewers(O, null))
+					O << " <b>[src.name]</b> beeps, \"Access closed.\""
+		else
+			flick("metaldetector2",src)
+			playsound(src.loc, 'sound/machines/ping.ogg', 60, 0)
+			for (var/mob/O in viewers(O, null))
+				O << " <b>[src.name]</b> beeps, \"Authorization failed.\""
 
 	if(istype(W,/obj/item/weapon/wrench))
 		user << "<span class='notice'>You begin [anchored ? "un" : ""]securing [name]...</span>"
@@ -162,7 +171,6 @@
 		I = pda.id
 	if(!istype(I) || !I.access) //not ID or no access
 		return 0
-	return 1
 
 /obj/machinery/metal_detector/Crossed(var/mob/living/carbon/M)
 	if(anchored && on)
@@ -173,7 +181,7 @@
 			s.start()
 			playsound(loc, 'sound/machines/ping.ogg', 100, 0)
 			return
-		if (istype(M, /mob/living))
+		if (istype(M, /mob/living/carbon/human))
 			var/contents = M.contents
 			for(var/obj/item/O in M.contents)
 				if(istype(O, /obj/item/weapon/storage))
